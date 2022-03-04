@@ -8,6 +8,7 @@ namespace Test1
             SetSize();
         }
         
+        private bool isEraser = false;
         private bool isMouse = false;
         private ArrayPoints arrayPoints = new ArrayPoints(2);
         private bool drawPen = true;
@@ -21,7 +22,7 @@ namespace Test1
 
         Pen pen = new Pen(Color.Black,3f);
         private Color c = Color.Black;
-        private int trackBarValue = 3;
+        private int trackbarValue = 3;
         private void SetSize()
         {
             Rectangle rectangle = Screen.PrimaryScreen.Bounds;
@@ -45,7 +46,7 @@ namespace Test1
             var height = Math.Abs(arrayPoints.GetPoints()[0].Y - arrayPoints.GetPoints()[1].Y);
             int x = Math.Min(arrayPoints.GetPoints()[0].X, arrayPoints.GetPoints()[1].X);
             int y = Math.Min(arrayPoints.GetPoints()[0].Y, arrayPoints.GetPoints()[1].Y);
-            SolidBrush sb = new SolidBrush(pen.Color);
+            SolidBrush sb = new SolidBrush(ˆ‚ÂÚ«‡ÎË‚ÍËToolStripMenuItem.BackColor);
             if (drawLine)
             {
                 graphics.DrawLine(pen, arrayPoints.GetPoints()[0], arrayPoints.GetPoints()[1]);
@@ -56,8 +57,7 @@ namespace Test1
                 {
                     graphics.FillRectangle(sb, x, y, width, height);
                 }
-                else
-                    graphics.DrawRectangle(pen, x, y, width, height);
+                graphics.DrawRectangle(pen, x, y, width, height);
             }
             if (drawEllipse)
             {
@@ -65,8 +65,7 @@ namespace Test1
                 {
                     graphics.FillEllipse(sb, x, y, width, height);
                 }
-                else
-                    graphics.DrawEllipse(pen, x, y, width, height);
+                graphics.DrawEllipse(pen, x, y, width, height);
             }
             pictureBox1.Image = map;
             arrayPoints.ResetPoints();
@@ -156,52 +155,66 @@ namespace Test1
             else
                 ‰‡ToolStripMenuItem.Text = "¬ÍÎ˛˜ËÚ¸";
         }
-
+        private void button10_Click(object sender, EventArgs e)
+        {
+            notEraser();
+            drawLine = true;
+            drawPen = false;
+            (drawEllipse, drawRectangle) = (false, false);
+        }
         private void button11_Click(object sender, EventArgs e)
         {
+            notEraser();
             drawLine = false;
             drawPen = false;
             (drawRectangle,drawEllipse) = (true,false);
-            trackBar1.Value = trackBarValue;
-            pen.Color = c;
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
+            notEraser();
             drawLine = false;
             drawPen = false;
             (drawEllipse,drawRectangle)= (true,false);
-            trackBar1.Value = trackBarValue;
-            pen.Color = c;
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
+            notEraser();
             drawPen = true;
             drawLine = false;
             (drawEllipse, drawRectangle) = (false, false);
-            trackBar1.Value = trackBarValue;
-            pen.Color = c;
         }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            drawLine = true;
-            drawPen = false;
-            (drawEllipse, drawRectangle) = (false, false);
-            trackBar1.Value = trackBarValue;
-            pen.Color = c;
-        }
-
         private void button14_Click(object sender, EventArgs e)
         {
+            isEraser = true;
             c = pen.Color;
-            pen.Color = pictureBox1.BackColor;
+            pen.Color = button15.BackColor;
             drawPen = true;
             drawLine = false;
             (drawEllipse, drawRectangle) = (false, false);
-            trackBarValue = trackBar1.Value;
+            trackbarValue = trackBar1.Value;
             trackBar1.Value = 25;
+        }
+
+        private void ˆ‚ÂÚ«‡ÎË‚ÍËToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (colorDialog2.ShowDialog() == DialogResult.OK)
+                ˆ‚ÂÚ«‡ÎË‚ÍËToolStripMenuItem.BackColor = colorDialog2.Color;
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            if (colorDialog3.ShowDialog() == DialogResult.OK)
+                button15.BackColor = colorDialog3.Color;
+            if(isEraser)
+                pen.Color = button15.BackColor;
+        }
+        private void notEraser()
+        {
+            isEraser = false;
+            pen.Color = c;
+            trackBar1.Value = trackbarValue;
         }
     }
 }

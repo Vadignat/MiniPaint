@@ -35,6 +35,7 @@
             this.стеретьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заливкаФигурыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.даToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.цветЗаливкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -57,12 +58,18 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button14 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
+            this.colorDialog2 = new System.Windows.Forms.ColorDialog();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
+            this.colorDialog3 = new System.Windows.Forms.ColorDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -104,7 +111,8 @@
             // заливкаФигурыToolStripMenuItem
             // 
             this.заливкаФигурыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.даToolStripMenuItem});
+            this.даToolStripMenuItem,
+            this.цветЗаливкиToolStripMenuItem});
             this.заливкаФигурыToolStripMenuItem.Name = "заливкаФигурыToolStripMenuItem";
             this.заливкаФигурыToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
             this.заливкаФигурыToolStripMenuItem.Text = "Заливка фигуры";
@@ -112,9 +120,16 @@
             // даToolStripMenuItem
             // 
             this.даToolStripMenuItem.Name = "даToolStripMenuItem";
-            this.даToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.даToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.даToolStripMenuItem.Text = "Включить";
             this.даToolStripMenuItem.Click += new System.EventHandler(this.даToolStripMenuItem_Click);
+            // 
+            // цветЗаливкиToolStripMenuItem
+            // 
+            this.цветЗаливкиToolStripMenuItem.Name = "цветЗаливкиToolStripMenuItem";
+            this.цветЗаливкиToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.цветЗаливкиToolStripMenuItem.Text = "Цвет заливки";
+            this.цветЗаливкиToolStripMenuItem.Click += new System.EventHandler(this.цветЗаливкиToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -253,7 +268,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(14, 36);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(759, 548);
+            this.pictureBox1.Size = new System.Drawing.Size(759, 551);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
@@ -381,11 +396,51 @@
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.SystemColors.Window;
+            this.panel4.Controls.Add(this.button15);
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.panel4.Location = new System.Drawing.Point(776, 509);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(125, 78);
+            this.panel4.TabIndex = 4;
+            this.panel4.UseWaitCursor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label2.Location = new System.Drawing.Point(13, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Цвет ластика";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.UseWaitCursor = true;
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.White;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Location = new System.Drawing.Point(45, 32);
+            this.button15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(34, 40);
+            this.button15.TabIndex = 8;
+            this.button15.Text = "...";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pictureBox1);
@@ -404,6 +459,8 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,5 +498,11 @@
         private ToolStripMenuItem заливкаФигурыToolStripMenuItem;
         private ToolStripMenuItem даToolStripMenuItem;
         private Button button14;
+        private ToolStripMenuItem цветЗаливкиToolStripMenuItem;
+        private ColorDialog colorDialog2;
+        private Panel panel4;
+        private Button button15;
+        private Label label2;
+        private ColorDialog colorDialog3;
     }
 }
