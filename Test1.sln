@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test1", "MiniPaint-master\Test1.csproj", "{341CE108-9DD4-427B-88D7-AE0245CFB5CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{341CE108-9DD4-427B-88D7-AE0245CFB5CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{341CE108-9DD4-427B-88D7-AE0245CFB5CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{341CE108-9DD4-427B-88D7-AE0245CFB5CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{341CE108-9DD4-427B-88D7-AE0245CFB5CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B8C5C9A-7826-44C8-B1C4-62738B33E6F5}
+	EndGlobalSection
+EndGlobal
