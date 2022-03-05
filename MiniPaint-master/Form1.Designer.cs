@@ -60,8 +60,8 @@
             this.button13 = new System.Windows.Forms.Button();
             this.colorDialog2 = new System.Windows.Forms.ColorDialog();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.colorDialog3 = new System.Windows.Forms.ColorDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -271,6 +271,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(759, 551);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
@@ -410,18 +411,6 @@
             this.panel4.TabIndex = 4;
             this.panel4.UseWaitCursor = true;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(13, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Цвет ластика";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label2.UseWaitCursor = true;
-            // 
             // button15
             // 
             this.button15.BackColor = System.Drawing.Color.White;
@@ -433,7 +422,20 @@
             this.button15.TabIndex = 8;
             this.button15.Text = "...";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.UseWaitCursor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label2.Location = new System.Drawing.Point(13, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Цвет ластика";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.UseWaitCursor = true;
             // 
             // Form1
             // 

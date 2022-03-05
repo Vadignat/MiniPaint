@@ -7,7 +7,7 @@ namespace Test1
             InitializeComponent();
             SetSize();
         }
-        
+
         private bool isEraser = false;
         private bool isMouse = false;
         private ArrayPoints arrayPoints = new ArrayPoints(2);
@@ -20,9 +20,12 @@ namespace Test1
         Bitmap map = new Bitmap(100, 100);
         Graphics graphics;
 
+
         Pen pen = new Pen(Color.Black,3f);
         private Color c = Color.Black;
         private int trackbarValue = 3;
+
+        int x1 = 0, y1 = 0;
         private void SetSize()
         {
             Rectangle rectangle = Screen.PrimaryScreen.Bounds;
@@ -74,6 +77,10 @@ namespace Test1
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (!isMouse) {return;}
+            x1 = e.X;
+            y1 = e.Y;
+            if(drawLine || drawEllipse || drawRectangle)
+                pictureBox1.Invalidate();
             if (drawPen)
             {
                 arrayPoints.SetPoint(e.X, e.Y);
@@ -85,7 +92,36 @@ namespace Test1
                 }
             }
         }
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
 
+            if (drawLine)
+            { 
+                e.Graphics.DrawLine(pen, arrayPoints.GetPoints()[0], new Point(x1, y1));
+                return;
+            }
+            var width = Math.Abs(arrayPoints.GetPoints()[0].X - x1);
+            var height = Math.Abs(arrayPoints.GetPoints()[0].Y - y1);
+            int x = Math.Min(arrayPoints.GetPoints()[0].X, x1);
+            int y = Math.Min(arrayPoints.GetPoints()[0].Y, y1);
+            SolidBrush sb = new SolidBrush(ˆ‚ÂÚ«‡ÎË‚ÍËToolStripMenuItem.BackColor);
+            if (drawRectangle)
+            {
+                if (fillFigure)
+                {
+                    e.Graphics.FillRectangle(sb, x, y, width, height);
+                }
+                e.Graphics.DrawRectangle(pen, x, y, width, height);
+            }
+            if (drawEllipse)
+            {
+                if (fillFigure)
+                {
+                    e.Graphics.FillEllipse(sb, x, y, width, height);
+                }
+                e.Graphics.DrawEllipse(pen, x, y, width, height);
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             pen.Color = ((Button)sender).BackColor;
@@ -157,14 +193,16 @@ namespace Test1
         }
         private void button10_Click(object sender, EventArgs e)
         {
-            notEraser();
+            if (isEraser)
+                notEraser();
             drawLine = true;
             drawPen = false;
             (drawEllipse, drawRectangle) = (false, false);
         }
         private void button11_Click(object sender, EventArgs e)
         {
-            notEraser();
+            if (isEraser)
+                notEraser();
             drawLine = false;
             drawPen = false;
             (drawRectangle,drawEllipse) = (true,false);
@@ -172,15 +210,16 @@ namespace Test1
 
         private void button12_Click(object sender, EventArgs e)
         {
-            notEraser();
+            if (isEraser)
+                notEraser();
             drawLine = false;
             drawPen = false;
             (drawEllipse,drawRectangle)= (true,false);
         }
 
         private void button13_Click(object sender, EventArgs e)
-        {
-            notEraser();
+        {   if(isEraser)
+                notEraser();
             drawPen = true;
             drawLine = false;
             (drawEllipse, drawRectangle) = (false, false);
