@@ -25,7 +25,7 @@ namespace Test1
         private Color c = Color.Black;
         private int trackbarValue = 3;
 
-        int x1 = 0, y1 = 0;
+        private int x1, y1;
         private void SetSize()
         {
             Rectangle rectangle = Screen.PrimaryScreen.Bounds;
@@ -94,32 +94,34 @@ namespace Test1
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-
-            if (drawLine)
-            { 
-                e.Graphics.DrawLine(pen, arrayPoints.GetPoints()[0], new Point(x1, y1));
-                return;
-            }
-            var width = Math.Abs(arrayPoints.GetPoints()[0].X - x1);
-            var height = Math.Abs(arrayPoints.GetPoints()[0].Y - y1);
-            int x = Math.Min(arrayPoints.GetPoints()[0].X, x1);
-            int y = Math.Min(arrayPoints.GetPoints()[0].Y, y1);
-            SolidBrush sb = new SolidBrush(ˆ‚ÂÚ«‡ÎË‚ÍËToolStripMenuItem.BackColor);
-            if (drawRectangle)
+            if (isMouse)
             {
-                if (fillFigure)
+                if (drawLine)
                 {
-                    e.Graphics.FillRectangle(sb, x, y, width, height);
+                    e.Graphics.DrawLine(pen, arrayPoints.GetPoints()[0], new Point(x1, y1));
+                    return;
                 }
-                e.Graphics.DrawRectangle(pen, x, y, width, height);
-            }
-            if (drawEllipse)
-            {
-                if (fillFigure)
+                var width = Math.Abs(arrayPoints.GetPoints()[0].X - x1);
+                var height = Math.Abs(arrayPoints.GetPoints()[0].Y - y1);
+                int x = Math.Min(arrayPoints.GetPoints()[0].X, x1);
+                int y = Math.Min(arrayPoints.GetPoints()[0].Y, y1);
+                SolidBrush sb = new SolidBrush(ˆ‚ÂÚ«‡ÎË‚ÍËToolStripMenuItem.BackColor);
+                if (drawRectangle)
                 {
-                    e.Graphics.FillEllipse(sb, x, y, width, height);
+                    if (fillFigure)
+                    {
+                        e.Graphics.FillRectangle(sb, x, y, width, height);
+                    }
+                    e.Graphics.DrawRectangle(pen, x, y, width, height);
                 }
-                e.Graphics.DrawEllipse(pen, x, y, width, height);
+                if (drawEllipse)
+                {
+                    if (fillFigure)
+                    {
+                        e.Graphics.FillEllipse(sb, x, y, width, height);
+                    }
+                    e.Graphics.DrawEllipse(pen, x, y, width, height);
+                }
             }
         }
         private void button1_Click(object sender, EventArgs e)
